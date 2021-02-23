@@ -1,0 +1,33 @@
+<div class="jumbotron">
+    <h1 class="text-center">Add New Restaurant Form</h1>
+</div>
+
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success !</strong> Your Data Added Successfully!..
+    <button (click)="alertClose()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<form class="form" [formGroup]="addRestaurant" (ngSubmit)="createResto()">
+
+    <div class="mb-3">
+      <label class="form-label">Email address</label>
+      <input type="text" class="form-control" placeholder="Enter Email" formControlName="email">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" placeholder="Enter Name" formControlName="name">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Phone</label>
+        <input type="text" class="form-control" placeholder="Enter Phone" formControlName="mobile">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Addres</label>
+        <input type="text" class="form-control" placeholder="Enter Addres" formControlName="address">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

@@ -1,0 +1,18 @@
+{
+    "employee" : [
+        {
+            "id" : 1,
+            "fullname" : "Shubham Agrawal",
+            "contactpreferance" : "email",
+            "email" : "abc@gmail.com",
+            "phone" : 1234567890,
+            "skills" : [
+                {
+                    "skillName" : "Angular",
+                    "experienceInYears" : 1,
+                    "proficiency" : "beginner"
+                }
+            ]
+        }
+    ]
+}

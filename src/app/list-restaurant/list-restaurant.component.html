@@ -1,0 +1,35 @@
+<a routerLink="/add" class="btn btn-sm btn-success" style="margin-bottom: 20px;">Add User</a>
+
+<div *ngIf="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Success !</strong> Your Data Deleted Successfully!..
+  <button (click)="alertClose()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let resto of collections">
+        <td>{{resto.id}}</td>
+        <td>{{resto.name}}</td>
+        <td>{{resto.address}}</td>
+        <td>{{resto.mobile}}</td>
+        <td>{{resto.email}}</td>
+        <td>
+          <a class="link" routerLink="/update/{{resto.id}}"><i class="far fa-edit"></i>&nbsp; &nbsp;</a>
+          <i class="fas fa-trash-alt" (click)="deleteResto(resto.id)" style="cursor: pointer;"></i>
+        </td>
+      </tr>
+    </tbody>
+</table>
+  
