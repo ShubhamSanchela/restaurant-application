@@ -32,7 +32,7 @@ export class CommonService {
   }
 
   createUser(data : any){
-    return this._http.post(this.reg_url + 'users',data)
+    return this._http.post("http://localhost:3000/users",data)
   }
 
   getLatestUsers(){
