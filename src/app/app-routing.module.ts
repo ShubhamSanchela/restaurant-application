@@ -19,7 +19,7 @@ const routes: Routes = [
 
   {path : "add" , canActivate : [AuthGuard], component : AddRestaurantComponent},
   {path : "update/:id" , component : UpdateRestaurantComponent},
-  {path : "register-list" , canActivate : [AuthGuard], component : ListRestaurantComponent},
+  {path : "list-resto" , canActivate : [AuthGuard], component : ListRestaurantComponent},
   {path : "login" , component : LoginRestaurantComponent},
   {path : "register" , canActivate : [AuthGuard], component : RegisterRestaurantComponent},
   {path : "home" , canActivate : [AuthGuard], component : HomeComponent},
