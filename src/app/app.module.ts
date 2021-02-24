@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
+import { NavbarComponent } from './navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { AuthGuard } from './auth.guard';
     LoginRestaurantComponent,
     RegisterRestaurantComponent,
     HomeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { AuthGuard } from './auth.guard';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

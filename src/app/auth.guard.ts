@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
         alert ("You don't have permission to access this page!!");
         this.router.navigateByUrl('/login');
       }
-    return true;
+    return false;
   }
   
 }

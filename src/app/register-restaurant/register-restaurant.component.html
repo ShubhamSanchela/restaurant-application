@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="jumbotron">
     <h1 class="text-center">Register User For restaurant Application</h1>
 </div>
@@ -9,19 +10,33 @@
 
 <form class="form" [formGroup]="registerUserForm" (ngSubmit)="regUser()">
 
-    <div class="mb-3">
+    <div class="mb-3 col-md-6">
         <label class="form-label">Name</label>
-        <input type="text" class="form-control" placeholder="Enter Name" formControlName="name">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="text" class="form-control" placeholder="Enter Phone" formControlName="email">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input type="password" class="form-control" placeholder="Enter Addres" formControlName="password">
+        <input type="text" class="form-control" placeholder="Enter Name"
+            [ngClass]="{ 'is-invalid': submitted && f.name.errors }" formControlName="name" required>
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name is required</div>
+        </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="mb-3 col-md-6">
+        <label class="form-label">Email</label>
+        <input type="text" class="form-control" placeholder="Enter Phone"
+            [ngClass]="{ 'is-invalid' : submitted && f.email.errors }" formControlName="email" required>
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
+    </div>
+
+    <div class="mb-3 col-md-6">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" placeholder="Enter Addres"
+            [ngClass]="{ 'is-invalid' : submitted && f.password.errors }" formControlName="password" required>
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mx-sm-3">Submit</button>
 
 </form>

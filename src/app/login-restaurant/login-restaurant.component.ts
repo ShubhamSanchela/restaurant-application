@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -9,24 +10,35 @@ import { AuthService } from '../auth.service';
 })
 export class LoginRestaurantComponent implements OnInit {
 
+  loginRestaurant : any = FormGroup
   email!: string;
   password!: string;
+  private formSubmitAttempt: boolean = false;
+  hide = true;
 
-  constructor(private router : Router, private authservice : AuthService) { }
+  constructor(private router : Router, private authservice : AuthService, private fb : FormBuilder) { }
 
   ngOnInit(){
+    this.loginRestaurant = this.fb.group({
+      email : ['', Validators.required],
+      password : ['', Validators.required]
+    })
   }
 
-  logIn(){
-    if(this.email == "admin@gmail.com" && this.password == "Admin@123"){
-      this.router.navigateByUrl('/home');
-    }else{
-      alert("Please Enter Valid Details");
-    }
-  }
-
-  // login(){
-  //   this.authservice.adminRights();
+  // logIn(){
+  //   if(this.email !== "" && this.password !== ""){
+  //     this.router.navigateByUrl('/home');
+  //   }else{
+  //     alert("Please Enter Valid Details");
+  //   }
   // }
+
+
+  onSubmit(){
+    if(this.loginRestaurant.valid) {
+      this.authservice.login(this.loginRestaurant.value)
+    }
+    this.formSubmitAttempt = true;
+  }
 
 }

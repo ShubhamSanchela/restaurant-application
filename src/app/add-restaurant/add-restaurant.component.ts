@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from '../common.service';
 
 @Component({
@@ -12,19 +12,28 @@ export class AddRestaurantComponent implements OnInit {
   alert : boolean = false;
   addRestaurant : any = FormGroup
   isvisible : boolean = true;
+  submitted = false;
+  loading = false;
 
   constructor(private common : CommonService, private fb : FormBuilder) { } 
 
   ngOnInit(){
     this.addRestaurant = this.fb.group({
-      name : [''],
-      email : [''],
-      mobile : [''],
-      address : ['']
+      name : ['', Validators.required],
+      email : ['', Validators.required,],
+      mobile : ['', Validators.required],
+      address : ['', Validators.required]
     })
   }
 
+  get f() { return this.addRestaurant.controls; }
+
   createResto(){
+    this.submitted = true;
+    if (this.addRestaurant.invalid) {
+      return
+    }
+    this.loading = true
     // console.log(this.addRestaurant.value);
     this.common.addResto(this.addRestaurant.value).subscribe((result) => {
        this.showAlert();

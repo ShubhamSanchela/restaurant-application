@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="jumbotron">
     <h1 class="text-center">Edit & Update Restaurant Form</h1>
 </div>
@@ -11,24 +12,23 @@
 
 <form class="form" [formGroup]="updateRestaurant" (ngSubmit)="updateResto()">
 
-    <div class="mb-3">
+    <div class="mb-3 col-md-6">
       <label class="form-label">Email address</label>
       <input type="text" class="form-control" placeholder="Enter Email" formControlName="email">
     </div>
-    <div class="mb-3">
+    <div class="mb-3 col-md-6">
         <label class="form-label">Name</label>
         <input type="text" class="form-control" placeholder="Enter Name" formControlName="name">
     </div>
-    <div class="mb-3">
+    <div class="mb-3 col-md-6">
         <label class="form-label">Phone</label>
         <input type="text" class="form-control" placeholder="Enter Phone" formControlName="mobile">
     </div>
-    <div class="mb-3">
+    <div class="mb-3 col-md-6">
         <label class="form-label">Addres</label>
         <input type="text" class="form-control" placeholder="Enter Addres" formControlName="address">
     </div>
 
-    <button type="submit" class="btn btn-primary">Update</button>
-    <!-- <button type="submit" class="btn btn-primary" (click)="delete(productId)">Delete</button> -->
+    <button type="submit" class="btn btn-primary mb-3 mx-sm-3">Update</button>
 
 </form>

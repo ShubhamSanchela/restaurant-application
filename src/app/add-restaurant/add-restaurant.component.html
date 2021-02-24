@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="jumbotron">
     <h1 class="text-center">Add New Restaurant Form From Netlify</h1>
 </div>
@@ -11,23 +12,38 @@
 
 <form class="form" [formGroup]="addRestaurant" (ngSubmit)="createResto()">
 
-    <div class="mb-3">
-      <label class="form-label">Email address</label>
-      <input type="text" class="form-control" placeholder="Enter Email" formControlName="email">
-    </div>
-    <div class="mb-3">
+    <div class="mb-3 col-md-6">
         <label class="form-label">Name</label>
-        <input type="text" class="form-control" placeholder="Enter Name" formControlName="name">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Phone</label>
-        <input type="text" class="form-control" placeholder="Enter Phone" formControlName="mobile">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Addres</label>
-        <input type="text" class="form-control" placeholder="Enter Addres" formControlName="address">
+        <input type="text" class="form-control" placeholder="Enter Name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" formControlName="name" required>
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name is required</div>
+        </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="mb-3 col-md-6">
+      <label class="form-label">Email address</label>
+      <input type="text" class="form-control" placeholder="Enter Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" formControlName="email" required>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+       </div>
+    </div>
+
+    <div class="mb-3 col-md-6">
+        <label class="form-label">Phone</label>
+        <input type="text" class="form-control" placeholder="Enter Phone" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" formControlName="mobile" required>
+        <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+            <div *ngIf="f.mobile.errors.required">Mobile is required</div>
+        </div>
+    </div>
+
+    <div class="mb-3 col-md-6">
+        <label class="form-label">Addres</label>
+        <input type="text" class="form-control" placeholder="Enter Addres" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" formControlName="address" required>
+        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+            <div *ngIf="f.address.errors.required">Address is required</div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-3 mx-sm-3">Submit</button>
 
 </form>
